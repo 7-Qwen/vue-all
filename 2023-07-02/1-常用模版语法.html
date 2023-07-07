@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return{
+                // 1.如果想用data输出html样式需要使用v-html才不会进行转义
+                // message: '<strong>hello world</strong>'
+                // 2.如果想在标签属性值中使用data中的值，需要使用v-bind绑定才会正确引用
+                message: 'hello world',
+                // 3.v-bind应用：disabled,控制输入框是否为激活状态；其他标签与之类似
+                // disabled: true
+                // 4.v-once只渲染一次，之后不会随着data的改变而改变
+                // 5.v-if的应用：show，控制div标签是否展示
+                show: true,
+                name: 'title',
+                event: 'click',
+                // event: 'mouseenter'
+
+            }
+        },
+        //差值表达式中可以写js表达式
+        // template:`
+        //     <div>{{message}}</div>
+        // `
+        //1.
+        // template: `
+        // <div v-html='message'>
+        //    {{message}}
+        // </div>
+        // `
+        //2.
+        // template: `
+        // <div v-bind:title = 'message'>hello world</div>
+        // `
+        //3.
+        // template: `
+        // <input v-bind:disabled='disabled'/>
+        // `
+        //4.
+        // template:`
+        //     <div v-once>{{message}}</div>
+        // `
+        //5.
+        // template:`
+        //     <div v-if='show'>{{message}}</div>
+        // `
+        methods:{
+            handleClick(){
+                alert('click')
+            }
+        },
+        //6.v-on:click 点击事件方法需要写在methods中才能生效
+        // template:`
+        //     <div v-on:click='handleClick'>{{message}}</div>
+        // `
+        //v-on可以用@代替 v-bind可以直接省略
+        // template:`
+        // <div 
+        //  @click='handleClick'
+        //  :title='message'
+        // >
+        //     {{message}}
+        // </div>
+        // `
+        //当属性值有时候不确定则可以使用 动态属性
+        // template:`
+        // <div 
+        //  @[event]='handleClick'
+        //  :[name]='message'
+        // >
+        //     {{message}}
+        // </div>
+        // `
+        //7.如果不阻止默认的跳转行为则点击之后就会进行跳转；可以通过.prevent阻止标签默认行为
+        template: `
+        <div>
+            <form action="https://www.baidu.com" @click.prevent='handleClick'>
+                <button type="submit">提交</button>
+            </form>
+        </div>
+        `
+    })
+    const vm = app.mount('#root')
+</script>
+</html>

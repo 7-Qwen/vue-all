@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+<div id="root"></div>
+</body>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                message: 'hello world',
+                //1-v-if和v-show的区别：元素消失机制不同；
+                //v-if是dom操作，整个元素消失
+                //v-show是行内元素属性值改为隐藏disable
+                //如果要频繁操作元素消失与否建议使用v-show，性能更高
+                show: false,
+                //条件判断语句中只有带了if的会进行参数判断，v-else怎么样都会执行
+                conditionOne: false,
+                conditionTwo: false,
+                oh: true,
+            }
+        },
+        methods:{
+
+        },
+        template:`
+        <div>
+            {{message}}<br/>
+            <div v-if='show'>v-if show</div>
+            <div v-show='show'>v-show</div>
+
+            <div v-if='conditionOne'>v-if</div>
+            <div v-else-if='conditionTwo'>v-if-else</div>
+            <div v-else='oh'>无论咋样都会执行</div>
+        </div>
+        `
+    })
+    const vm = app.mount('#root')
+</script>
+
+</html>

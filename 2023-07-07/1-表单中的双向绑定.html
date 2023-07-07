@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return{
+                //1-复选框,可选多个，多个值需要用数组
+                // message: [],
+                //2-单选框，可选单个，单个值需要用字符串
+                // message: '',
+                //3-select选项 当使用该形式的时候返回一个json对象value可以使用value:{value:"xxx"}写法
+                // options:[
+                //     {
+                //         text:'A',value:'A',
+                //     },
+                //     {
+                //         text:'B',value:{value:'B'},
+                //     },
+                //     {
+                //         text:'C',value:'C',
+                //     }
+                // ]
+                //4-checkbox
+                message: "芜湖"
+            }
+        },
+        methods:{
+
+        },
+        //1-复选框+v-model应用
+        // template:`
+        //     <div>
+        //         {{message}}<br/>
+        //         <input v-model='message'/><br/>
+        //         <textarea v-model='message'/><br/>
+        //         jack<input type='checkbox' v-model='message' value='jack'>
+        //         del<input type='checkbox' v-model='message' value='del'>
+        //         hukoo<input type='checkbox' v-model='message' value='hukoo'>
+        //     </div>
+        // `
+        //2-radio+v-model应用
+        // template:`
+        //     <div>
+        //         {{message}}<br/>
+        //         <input v-model='message'/><br/>
+        //         jack<input type='radio' v-model='message' value='jack'>
+        //         del<input type='radio' v-model='message' value='del'>
+        //         hukoo<input type='radio' v-model='message' value='hukoo'>
+        //     </div>
+        // `
+        //3-选择select选项 multiple为可选多个选项
+        // template:`
+        //     <div>
+        //         {{message}}<br/>
+        //         <input v-model='message'/><br/>
+        //         <select v-model='message' multiple>
+        //             <option v-for='item in options' :value='item.value'>{{item.text}}</option>
+        //         </select>
+        //     </div>
+        // `
+        //4-checkbox 修改选中与否的数值
+        // template:`
+        //     <div>
+        //         {{message}}<br/>
+        //         <input type='checkbox' v-model='message' true-value='hello' false-value='world'/><br/>
+        //     </div>
+        // `
+        //5.v-model修饰符
+        //lazy - 将即时->延迟
+        //number - 将data变为数值类型
+        //trim - 将data前后的空格给去掉
+        template:`
+            <div>
+                {{message}}+{{typeof(message)}}<br/>
+                <input v-model.trim='message'/><br/>
+            </div>
+        `
+
+    })
+    const vm = app.mount("#root")
+</script>
+</html>
