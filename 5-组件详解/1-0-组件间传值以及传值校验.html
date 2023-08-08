@@ -25,6 +25,8 @@
         method: {
 
         },
+        // 动态属性：使用v-bind绑定data属性
+        // 静态属性：使用默认写死的属性值
         template: `
             <div>
                 {{message}} <br/>
@@ -34,6 +36,11 @@
     })
     app.component('test', {
         props: {
+            // 对父组件传递过来的属性进行校验
+            //type String,Boolean,Array,Object,Function,Symbol
+            //require 必填
+            //default 默认值 如果不传递该compont值，则使用默认值；不一定是值也可以是函数
+            //validator 函数，接收传递值，校验表达式返回boolean值
             compont: {
                 type: Function,
                 require: true,

@@ -67,23 +67,23 @@
         //         </select>
         //     </div>
         // `
-        //4-checkbox 修改选中与否的数值
-        // template:`
-        //     <div>
-        //         {{message}}<br/>
-        //         <input type='checkbox' v-model='message' true-value='hello' false-value='world'/><br/>
-        //     </div>
-        // `
+        //4-checkbox 修改选中与否的默认数值
+        template:`
+            <div>
+                {{message}}<br/>
+                <input type='checkbox' v-model='message' true-value='hello' false-value='world'/><br/>
+            </div>
+        `
         //5.v-model修饰符
         //lazy - 将即时->延迟
         //number - 将data变为数值类型
         //trim - 将data前后的空格给去掉
-        template:`
-            <div>
-                {{message}}+{{typeof(message)}}<br/>
-                <input v-model.trim='message'/><br/>
-            </div>
-        `
+        // template:`
+        //     <div>
+        //         {{message}}+{{typeof(message)}}<br/>
+        //         <input v-model.trim='message'/><br/>
+        //     </div>
+        // `
 
     })
     const vm = app.mount("#root")

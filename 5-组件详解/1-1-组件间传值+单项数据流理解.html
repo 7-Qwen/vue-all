@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script>
+
+    const wuHu = {
+        data() {
+            return {
+                msg: 'wuhuComponent~'
+            }
+        },
+        method: {
+
+        },
+        template: `
+            <div>
+                {{msg}}
+            </div>
+        `
+    }
+    const app = Vue.createApp({
+        components: {
+            wuHu,
+        },
+        data() {
+            return {
+                msg: "rootComponent~",
+                //1.可以通过v-bind方式绑定多个组件属性值
+                wuwu:{
+                    field: 'appComponent',
+                    a:'haha-a',
+                    b:'haha-b'
+                }
+            }
+        },
+        method: {
+
+        },
+        //1
+        template: `
+            <div>
+                {{msg}}
+                <c v-bind='wuwu'/>
+                <wu-hu/>
+            </div>
+        `
+    });
+    app.component('c', {
+        props: {
+            'field':{},
+            'a':{},
+            'b':{}
+        },
+        data() {
+            return {
+
+            }
+        },
+        template: `
+            <div>
+                {{field}}<br/>
+                {{a}}<br/>
+                {{b}}<br/>
+            </div>
+        `
+    })
+    const vm = app.mount('#root');
+</script>
+
+</html>
