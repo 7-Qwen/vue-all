@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello world</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <!-- 把template模版的内容放到id为root的标签中去 -->
+    <div id="root"></div>
+</body>
+<script>
+    // 创建一个vue实例,让其作用于root
+    Vue.createApp({
+        // 使用模版作为展示内容
+        // template: `<div>hello world</div>`
+        template:`
+        <div>
+            {{content}}
+        `
+    }).mount('#root');
+</script>
+
+</html>
